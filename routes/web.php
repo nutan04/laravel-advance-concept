@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/taskschedule', function () {
+    return view('taskshedule');
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -26,3 +28,4 @@ Route::get('email-test', function(){$details['email'] = 'nutanp230@gmail.com';
 dispatch(new App\Jobs\SendEmailJob($details));
 dd('done');
 });
+Route::post('/addData',[App\Http\Controllers\TaskAddController::class,'addTask'])->name('addData');
