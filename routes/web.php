@@ -22,3 +22,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/deposit', [App\Http\Controllers\DepositController::class,'deposit'])->name('deposit');
 Route::post('/mark-as-read', [App\Http\Controllers\DepositController::class,'markAsRead'])->name('mark-as-read');
+Route::get('email-test', function(){$details['email'] = 'nutanp230@gmail.com';
+dispatch(new App\Jobs\SendEmailJob($details));
+dd('done');
+});
