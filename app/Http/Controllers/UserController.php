@@ -18,7 +18,7 @@ class UserController extends Controller
     public function search(Request $request)
     {
         // $user = User::find($request->input('user_id'));
-   //#here we simply apply logic where we back action from controller
+        //#here we simply apply logic where we back action from controller
         // try {
         //     $user = User::findOrFail($request->input('user_id'));
         // } catch (ModelNotFoundException $exception) {
@@ -34,6 +34,14 @@ class UserController extends Controller
             }
 
         return view('users.search', compact('user'));
+    }
+
+
+    public function user(){
+   return response()->json([
+    "message"=>"We find out the user",
+    "status_code"=>200
+   ]);
     }
 
 }
