@@ -29,3 +29,10 @@ dispatch(new App\Jobs\SendEmailJob($details));
 dd('done');
 });
 Route::post('/addData',[App\Http\Controllers\TaskAddController::class,'addTask'])->name('addData');
+
+
+//for handling error exception
+Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+Route::post('/users/search', [App\Http\Controllers\UserController::class, 'search'])->name('users.search');
+
+
