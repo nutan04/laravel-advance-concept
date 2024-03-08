@@ -4,6 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
+use App\Event\UserCreated;
+use App\Listeners\SendEmail;
+use App\Event\ClearCache;
+use App\Listeners\WarmUpCache;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 
@@ -17,6 +21,12 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+        ],
+        UserCreated::class => [
+            SendEmail::class,
+        ],
+        ClearCache::class => [
+            WarmUpCache::class,
         ],
     ];
 

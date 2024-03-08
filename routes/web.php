@@ -34,5 +34,9 @@ Route::post('/addData',[App\Http\Controllers\TaskAddController::class,'addTask']
 //for handling error exception
 Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
 Route::post('/users/search', [App\Http\Controllers\UserController::class, 'search'])->name('users.search');
+Route::get('/event-created', [App\Http\Controllers\UserController::class, 'placeEvent']);
+Route::get('/cache-event', [App\Http\Controllers\UserController::class, 'cacheEvent']);
+
+
 
 

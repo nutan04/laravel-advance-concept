@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Exception\UserNotFoundException;
+use App\Event\UserCreated;
+use App\Event\ClearCache;
+
 class UserController extends Controller
 {
     public function index()
@@ -43,5 +46,21 @@ class UserController extends Controller
     "status_code"=>200
    ]);
     }
+
+
+    public function placeEvent()
+{
+    // Trigger the event
+    event (new UserCreated("abc@gmail.com"));
+    return "User Created successfully!";
+}
+
+public function cacheEvent(){
+// you clear specific caches at this stage
+$arr_caches = ['categories', 'products'];
+
+// want to raise ClearCache event
+event(new ClearCache($arr_caches));
+}
 
 }
